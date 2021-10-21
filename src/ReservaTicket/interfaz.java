@@ -1,7 +1,15 @@
 package ReservaTicket;
 import java.util.Scanner;
 
+import java.net.URL;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 public class interfaz {
+	
+	public static Logger logger = LogManager.getLogger(interfaz.class);
 
 	
 	public void menu()
@@ -53,6 +61,12 @@ public class interfaz {
 	}
 	
 	public static void main (String [ ] args) {
+		
+		ClassLoader loader = Thread.currentThread().getContextClassLoader();
+		URL url = loader.getResource("log4j.properties");
+		PropertyConfigurator.configure(url);
+		
+		logger.info("Iniciada aplicación.");
 		
 		interfaz inter=new interfaz();
 		inter.menu();
