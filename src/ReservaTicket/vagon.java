@@ -54,6 +54,7 @@ public class vagon {
 		if(capacidad==0)
 		{
 			System.out.println("Todos los asientos estan ocupados");
+			interfaz.logger.info("Intento de reserva del primer asiento no cumplido por llegar a la capacidad maxima del vagon.");
 		}
 		
 		for(int i=0; i<asientos.length;i++)
@@ -65,6 +66,7 @@ public class vagon {
 					asientos[i][j]='O';
 					capacidad--;
 					System.out.println("Asiemto: Fila "+(i+1)+" Columna "+(j+1)+" reservado.");
+					interfaz.logger.info("Asiemto: Fila "+(i+1)+" Columna "+(j+1)+" reservado.");
 					return;
 				}
 			}
@@ -76,6 +78,7 @@ public class vagon {
 		if(capacidad==0)
 		{
 			System.out.println("Todos los asientos estan ocupados");
+			interfaz.logger.info("Intento de reserva del asiento "+(fila+1)+" columna "+(columna+1)+" no cumplido por llegar a la capacidad maxima del vagon.");
 		}
 		
 		if(fila<asientos.length && columna < asientos[0].length && fila>=0 && columna>=0)
@@ -89,11 +92,13 @@ public class vagon {
 			else
 			{
 				System.out.println("Asiemto: Fila "+(fila+1)+" Columna "+(columna+1)+" ya esta reservado.");
+				interfaz.logger.info("Intento de reserva del asiento "+(fila+1)+" columna "+(columna+1)+" no cumplido por estar ya ocupado.");
 			}
 		}
 		else
 		{
 			System.out.println("Fila y/o columna incorrecta.");
+			interfaz.logger.info("Seleccion incorrecta de fila y/o columna al reservar asiento especifico.");
 		}
 	}
 }
