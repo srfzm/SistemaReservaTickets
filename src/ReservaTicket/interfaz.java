@@ -19,6 +19,8 @@ public class interfaz {
 		int opcion=0;
 		Scanner in = new Scanner(System.in);
 		
+		logger.info("Iniciado el menú.");
+		
 		do
 		{
 			System.out.println("Opciones disponibles:");
@@ -30,6 +32,7 @@ public class interfaz {
 			switch(opcion)
 			{
 				case 1:
+					logger.info("Elegida la opción de reserva del primer asiento.");
 					vagonAct.reservarPrimero();
 					vagonAct.mostrar();
 					break;
@@ -41,11 +44,14 @@ public class interfaz {
 					salir=true;
 					break;
 				default :
+					logger.info("Elegida una opción incorrecta.");
 					System.out.println("Opcion incorrecta, intentelo de nuevo.");
 					
 			}
 			
 		}while(!salir);
+		
+		logger.info("Salida del menú.");
 	}
 	
 	public void pedirAsiento(vagon vagonAct, Scanner in)
@@ -56,6 +62,7 @@ public class interfaz {
 		fila = in.nextInt();
 		System.out.println("Introduzca la columna.");
 		columna = in.nextInt();
+		logger.info("Intento de reserva en la posicion "+fila+" columna "+columna+".");
 		vagonAct.reservarEspecifico(fila-1, columna-1);
 		
 	}
@@ -65,8 +72,6 @@ public class interfaz {
 		ClassLoader loader = Thread.currentThread().getContextClassLoader();
 		URL url = loader.getResource("log4j.properties");
 		PropertyConfigurator.configure(url);
-		
-		logger.info("Iniciada aplicación.");
 		
 		interfaz inter=new interfaz();
 		inter.menu();
